@@ -2,6 +2,7 @@ import { Module, Scope } from '@nestjs/common'
 import { CmsService } from './cms.service'
 import { HttpAdapterHost } from '@nestjs/core'
 import payload from 'payload'
+import { ConfigService } from '@nestjs/config'
 import config from './payload.config'
 
 @Module({
@@ -9,12 +10,12 @@ import config from './payload.config'
     CmsService,
     {
       provide: 'CMS',
-      inject: [HttpAdapterHost],
+      inject: [HttpAdapterHost, ConfigService],
       scope: Scope.DEFAULT, // Singleton
-      useFactory: async (httpAdapterHost: HttpAdapterHost) => {
+      useFactory: async (httpAdapterHost: HttpAdapterHost, configService: ConfigService) => {
         return await payload.init({
-          secret: 'fc2f5dec-403d-444c-94b3-daf626de148f',
-          mongoURL: 'mongodb://root:payloady@localhost',
+          secret: configService.getOrThrow('cms.secret'),
+          mongoURL: configService.getOrThrow('cms.mongoUrl'),
           express: httpAdapterHost.httpAdapter.getInstance(),
           config,
         })

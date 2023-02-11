@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "NodeNext",
     "moduleResolution": "Node",
     "declaration": true,
     "removeComments": true,
@@ -23,6 +23,12 @@
       "payload/generated-types": [
         "./src/cms/types/cms.types.ts"
       ]
-    }
-  }
+    },
+    "jsx": "react",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+  },
 }

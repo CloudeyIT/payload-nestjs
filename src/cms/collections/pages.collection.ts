@@ -1,6 +1,7 @@
 import { CollectionConfig } from 'payload/types'
+import SlugField from '../fields/slug.field'
 
-const Pages: CollectionConfig = {
+export const Pages: CollectionConfig = {
   slug: 'pages',
   admin: {
     useAsTitle: 'title',
@@ -11,6 +12,17 @@ const Pages: CollectionConfig = {
       type: 'text',
       label: 'Title',
       required: true,
+    },
+    {
+      name: 'slug',
+      type: 'text',
+      unique: true,
+      required: true,
+      admin: {
+        components: {
+          Field: SlugField,
+        },
+      },
     },
     {
       name: 'content',
@@ -26,5 +38,3 @@ const Pages: CollectionConfig = {
     },
   ],
 }
-
-export default Pages

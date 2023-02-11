@@ -1,5 +1,5 @@
 import { buildConfig } from 'payload/config'
-import Pages from './collections/pages.collection'
+import { Pages } from './collections/pages.collection'
 import * as path from 'path'
 
 export default buildConfig({
@@ -13,6 +13,6 @@ export default buildConfig({
     graphQLPlayground: '/cms/playground',
   },
   typescript: {
-    outputFile: path.resolve(__dirname, './types/cms.types.ts'),
+    outputFile: path.resolve(__dirname, './cms/types/cms.types.ts'),
   },
 })

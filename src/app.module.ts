@@ -3,9 +3,13 @@ import { AppController } from './app.controller'
 import { AppService } from './app.service'
 import { ConfigModule } from '@nestjs/config'
 import { CmsModule } from './cms/cms.module'
+import configuration from './configuration'
 
 @Module({
-  imports: [ConfigModule.forRoot(), CmsModule],
+  imports: [ConfigModule.forRoot({
+    isGlobal: true,
+    load: [configuration],
+  }), CmsModule],
   controllers: [AppController],
   providers: [AppService],
 })

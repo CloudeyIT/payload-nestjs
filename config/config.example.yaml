@@ -1,0 +1,3 @@
+cms:
+  secret: fc2f5dec-403d-444c-94b3-daf626de148f
+  mongo: mongodb://root:payloady@localhost
