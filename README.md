@@ -1,4 +1,4 @@
-# Payloady
+# Payload + NestJS
 
 A fusion of PayloadCMS and NestJS
 
